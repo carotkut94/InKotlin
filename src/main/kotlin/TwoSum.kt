@@ -24,3 +24,4 @@ class TwoSum{
 
 // Link to explanation
 // https://drive.google.com/file/d/1ya3NJt_MQPUy23NuYDR6_Y60FtA6Cr3K/view?usp=sharing
+// this can also be solved with two pointer approach on sorted array
