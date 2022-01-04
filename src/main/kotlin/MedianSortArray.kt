@@ -5,7 +5,6 @@ fun main() {
 
     val l = Solution()
     print(l.findMedianSortedArrays(intArrayOf(1,2), intArrayOf(3,4)))
-    print("$l \n")
 }
 
 class MedianSortArray {
@@ -50,10 +49,10 @@ class Solution {
             val minY = if(partitionY==y) Integer.MAX_VALUE else nums2[partitionY]
 
             if(maxX <= minY && maxY <= minX){
-                if((x+y)%2==0){
-                    return (Math.max(maxX, maxY)+Math.min(minY, minX))/2.toDouble()
+                return if((x+y)%2==0){
+                    (maxX.coerceAtLeast(maxY) + minY.coerceAtMost(minX))/2.toDouble()
                 }else{
-                    return Math.max(maxX, maxY).toDouble()
+                    maxX.coerceAtLeast(maxY).toDouble()
                 }
             }else if(maxX>minY){
                 high = partitionX-1
