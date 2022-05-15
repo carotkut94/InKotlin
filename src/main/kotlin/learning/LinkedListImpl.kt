@@ -63,6 +63,50 @@ class LinkedList<T>{
         }
     }
 
+    fun pop(): LinkedList<T> {
+        if(!isEmpty()) size--
+        if(head!=null){
+            head = head?.next
+        }
+        if(isEmpty()){
+            tail = null
+        }
+        return this
+    }
+
+    fun removeLast() : LinkedList<T> {
+        if (head==null) return this
+        if(head?.next == null){
+            size--;
+            return pop()
+        }
+
+        var previous = head
+        var current = head
+        var next:NNode<T>? = head?.next
+
+        while (next != null){
+            previous = current
+            current = next
+            next = current.next
+        }
+        previous?.next = null
+        tail = previous
+        return this
+    }
+
+    fun removeAfter(node: NNode<T>?): LinkedList<T>{
+        if(node?.next == tail) {
+            tail = node
+        }
+
+        if(node?.next != null){
+            size--
+        }
+        node?.next = node?.next?.next
+        return this
+    }
+
     fun isEmpty(): Boolean {
         return size == 0
     }
@@ -90,5 +134,13 @@ fun main(){
     println(linkedList.getSize())
     println(linkedList.isEmpty())
     linkedList.insertAfterNode(89, linkedList.getNodeAt(2))
-    print(linkedList)
+    println(linkedList)
+    linkedList.pop().pop()
+    println(linkedList)
+    linkedList.removeLast().removeLast().removeLast()
+    println(linkedList)
+    val nodeToRemove = linkedList.getNodeAt(0)
+    linkedList.removeAfter(nodeToRemove)
+    println(linkedList)
 }
+
