@@ -23,7 +23,5 @@ fun main(){
         }
     }
 
-    mergedArray.forEach{
-        println(it)
-    }
+    mergedArray.toTypedArray()
 }
