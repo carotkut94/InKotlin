@@ -18,9 +18,26 @@ class SeventyFiveD2 {
 
         return true
     }
+    fun isSubsequence(s: String, t: String): Boolean {
+        if(s.isEmpty()) return true
+        if(t.length<s.length) return false
+
+        var count = 0
+        for(i in t.indices){
+            if(t[i] == s[count]){
+                count++
+                if(count==s.length){
+                    return true
+                }
+            }
+        }
+
+        return false
+    }
 }
 
 fun main(){
     val seventyFiveD2 = SeventyFiveD2()
     println(seventyFiveD2.isIsomorphic("egg", "add"))
+    println(seventyFiveD2.isSubsequence("ace", "abbcnnne"))
 }
