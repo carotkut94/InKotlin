@@ -46,4 +46,21 @@ class AnotherReverseAndMiddle {
         }
         return slow
     }
+
+    fun detectCycle(head: ListNode?): ListNode? {
+        val table = mutableMapOf<ListNode?, Boolean>()
+        var current = head
+        var cycleFound = false
+        if(head==null || head.next==null){
+            return null
+        }
+        while (current!=null || !cycleFound ){
+            table.put(current, true)
+            current = current?.next
+            if(table.containsKey(current)){
+                return current
+            }
+        }
+        return null
+    }
 }
