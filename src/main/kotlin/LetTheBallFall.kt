@@ -10,7 +10,7 @@ class LetTheBallFall {
         return resultArray
     }
 
-    private fun dfs(grid: Array<IntArray>, row: Int, column: Int): Int {
+    private tailrec fun dfs(grid: Array<IntArray>, row: Int, column: Int): Int {
         if(row == grid.size){
             return column
         }
